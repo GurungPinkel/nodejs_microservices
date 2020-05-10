@@ -11,7 +11,7 @@ build:
     - image: pinkelgrg/auth
       context: auth
       docker: 
-        dockerfile: DockerFile
+        dockerfile: Dockerfile
       sync: 
         manual:
           - src: 'src/**/*.ts'
