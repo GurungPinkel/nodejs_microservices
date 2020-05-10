@@ -26,7 +26,7 @@ const signInRouter = router.post("/api/users/signin", [
     return next(new BadRequestError("Invalid Credentials!"));
   }
   
-  const isPasswordMatch = Password.compare(existingUser.password, password);
+  const isPasswordMatch = await Password.compare(existingUser.password, password);
 
   if(!isPasswordMatch){
     req.session = null;
