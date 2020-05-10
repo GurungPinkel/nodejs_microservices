@@ -1,14 +1,14 @@
 import express, {Request, Response, NextFunction} from 'express';
 import  { body } from 'express-validator';
-import { validateRequest } from '../middlewares/validate-request'
-import { User } from '../models/user';
-import { BadRequestError } from '../errors/bad-request-error';
+import validateRequest from '../middlewares/validate-request'
+import User from '../models/user';
+import BadRequestError from '../errors/bad-request-error';
 import { Password } from '../services/password';
 import jwt from 'jsonwebtoken';
 
 const router = express.Router();
 
-router.post("/api/users/signin", [
+const signInRouter = router.post("/api/users/signin", [
   body('email')
   .isEmail()
   .withMessage("Invalid Email"),
@@ -47,4 +47,6 @@ router.post("/api/users/signin", [
   return res.status(201).send(existingUser);
 });
 
-export {router as signInRouter};
+export {
+  signInRouter
+};

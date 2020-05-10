@@ -1,7 +1,6 @@
-import { ValidationError } from 'express-validator';
-import { CustomError } from './custom-error';
+import CustomError from './custom-error';
 
-export class DatabasaeRelatedError extends CustomError {
+class DatabasaeRelatedError extends CustomError {
   statusCode = 500;
   reason = 'Error Connecting to database';
 
@@ -20,3 +19,4 @@ export class DatabasaeRelatedError extends CustomError {
     ]
   }
 }
+export default DatabasaeRelatedError;

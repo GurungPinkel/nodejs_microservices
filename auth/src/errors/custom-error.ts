@@ -1,5 +1,5 @@
 
-export abstract class CustomError extends Error {
+abstract class CustomError extends Error {
   abstract statusCode: number;
 
   constructor (message: string) {
@@ -9,3 +9,5 @@ export abstract class CustomError extends Error {
 
   abstract serializeErrors(): { message: String; field?: String}[]
 }
+
+export default CustomError;
