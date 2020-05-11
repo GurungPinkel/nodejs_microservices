@@ -4,8 +4,8 @@ class DatabasaeRelatedError extends CustomError {
   statusCode = 500;
   reason = 'Error Connecting to database';
 
-  constructor () {
-    super("Database Related Error");
+  constructor() {
+    super('Database Related Error');
 
     // Only because we are building a built in class
     Object.setPrototypeOf(this, DatabasaeRelatedError.prototype);
@@ -13,10 +13,10 @@ class DatabasaeRelatedError extends CustomError {
 
   serializeErrors = () => {
     return [
-      { 
-        message: this.reason
-      }
-    ]
-  }
+      {
+        message: this.reason,
+      },
+    ];
+  };
 }
 export default DatabasaeRelatedError;

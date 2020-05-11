@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watchAll --no-cache",
-    "start": "ts-node-dev --poll src/index.ts"
+    "start": "ts-node-dev --poll src/index.ts",
+    "tslint": "tslint --project tsconfig.json",
+    "prettier": "prettier --write ."
   },
   "jest": {
     "preset": "ts-jest",
@@ -13,6 +15,17 @@
     "setupFilesAfterEnv": [
       "./src/test/setup.ts"
     ]
+  },
+  "lint-staged": {
+    "./src/*.{js,jsx,ts,tsx}": [
+      "npm run prettier",
+      "eslint src/*.js --fix-dry-run"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "keywords": [],
   "author": "",
@@ -35,9 +48,14 @@
   "devDependencies": {
     "@types/jest": "^25.2.1",
     "@types/supertest": "^2.0.9",
+    "husky": "^4.2.5",
     "jest": "^26.0.1",
+    "lint-staged": "^10.2.2",
     "mongodb-memory-server": "^6.5.2",
+    "prettier": "^2.0.5",
     "supertest": "^4.0.2",
-    "ts-jest": "^25.5.1"
+    "ts-jest": "^25.5.1",
+    "tslint": "^6.1.2",
+    "tslint-config-prettier": "^1.18.0"
   }
 }
